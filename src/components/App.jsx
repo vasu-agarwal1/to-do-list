@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import eachItem from "./eachItem";
+import EveryItem from "./EveryItem";
 
 function App() {
   const [item, setItem] = useState("");
@@ -16,6 +16,13 @@ function App() {
 
     setItem("");
   }
+  function deleteItem(id) {
+    setInputItem((prevItem) => {
+      return prevItem.filter((item, index) => {
+        return index !== id;
+      });
+    });
+  }
 
   return (
     <div className="container">
@@ -30,10 +37,14 @@ function App() {
       </div>
       <div>
         <ul>
-          {/* inputItem is a array of all the input items and eachitem is every single item inside array */}
-          {inputItem.map((eachItem) => (
-            <eachItem 
-            text = {eachItem}/>
+          {/* inputItem is a array of all the input items and eachitems is every single item inside array */}
+          {inputItem.map((eachItems, index) => (
+            <EveryItem
+              key={index}
+              id={index}
+              text={eachItems}
+              onChecked={deleteItem}
+            />
           ))}
         </ul>
       </div>
