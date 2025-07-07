@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import eachItem from "./eachItem";
 
 function App() {
   const [item, setItem] = useState("");
@@ -29,8 +30,10 @@ function App() {
       </div>
       <div>
         <ul>
+          {/* inputItem is a array of all the input items and eachitem is every single item inside array */}
           {inputItem.map((eachItem) => (
-            <li>{eachItem}</li>
+            <eachItem 
+            text = {eachItem}/>
           ))}
         </ul>
       </div>
